@@ -19,6 +19,13 @@ use Exception;
  * @OA\PathItem(
  *     path="/api/v1/"
  * ),
+ * @OA\Components(
+ *     @OA\SecurityScheme(
+ *         securityScheme="bearerAuth",
+ *         type="http",
+ *         scheme="bearer"
+ *     )
+ * ),
  * @OA\Server(
  *     url="http://localhost:5000/api/v1"
  * )
@@ -52,16 +59,8 @@ class RandomNumberController extends Controller
      *      operationId="numberCreate",
      *      summary="Random Number Generation",
      *      description="Create the new random integer number",
-     *      tags={"Protected"},
-      *      @OA\RequestBody(
-     *          @OA\JsonContent(
-     *              allOf={
-     *                  @OA\Schema(
-     *                      @OA\Property(property="number", type="integer", example=42),
-      *                  )
-     *              }
-     *          )
-     *      ),
+     *      tags={"With Authentication"},
+     *      security={{ "bearerAuth": {} }},
      *      @OA\Response(
      *          response=200,
      *          description="OK",
@@ -129,7 +128,7 @@ class RandomNumberController extends Controller
      *     operationId="numberId",
      *     summary="Get number by it ID",
      *     description="Retrieve number",
-     *     tags={"Common data"},
+     *     tags={"Without Authentication"},
      *     @OA\Parameter(
      *         description="Number ID",
      *         in="path",

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\RandomNumberController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,11 +15,12 @@ use App\Http\Controllers\Api\V1\RandomNumberController;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+Route::prefix('auth')->middleware('api')->group(function ($router) {
+    Route::post('/login', [AuthController::class, 'login']);
+});
 
 Route::namespace('App\Http\Controllers\Api\V1')->group(function () {
     Route::get('/numbers/{id}', [RandomNumberController::class, 'retrieve'])->name('retrieve');
-    Route::post('/numbers', [RandomNumberController::class, 'generate'])->name('generate');
+
+    Route::post('/numbers', [RandomNumberController::class, 'generate'])->middleware('jwt.auth')->name('generate');
 });
