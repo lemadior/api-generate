@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\RandomNumber;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RandomNumber>
+ * @extends Factory<RandomNumber>
  */
 class RandomNumberFactory extends Factory
 {
@@ -16,8 +17,11 @@ class RandomNumberFactory extends Factory
      */
     public function definition(): array
     {
+        // Amount of the digit in the generated number
+        $nbDigit = env('RANDOM_NUMBER_DIGITS', 2);
+
         return [
-            //
+            'number' => fake()->unique()->randomNumber($nbDigit)
         ];
     }
 }
