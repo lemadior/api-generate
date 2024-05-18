@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/fonts.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-        <title>@yield('title', 'FauxEd: University Students Database')</title>
+        <title>@yield('title', 'RandomGen: Random Number Generation')</title>
     </head>
 
     <body>

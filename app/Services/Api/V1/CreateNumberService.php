@@ -55,7 +55,7 @@ class CreateNumberService
     }
 
     /**
-     * Count total count of numbers stored in the database
+     * Count total amount of numbers stored in the database
      *
      * @return int
      */
