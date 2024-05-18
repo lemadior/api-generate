@@ -1,0 +1,226 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "RandomGen Api",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5000/api/v1"
+        }
+    ],
+    "paths": {
+        "/api/v1/": {},
+        "/numbers": {
+            "post": {
+                "tags": [
+                    "Protected"
+                ],
+                "summary": "Random Number Generation",
+                "description": "Create the new random integer number",
+                "operationId": "numberCreate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "number": {
+                                                "type": "integer",
+                                                "example": 42
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Data array",
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "description": "ID of the newly created student record",
+                                                    "type": "integer",
+                                                    "example": 42
+                                                },
+                                                "number": {
+                                                    "description": "Value of the newly created number",
+                                                    "type": "integer",
+                                                    "example": 420
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Wrong request!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "properties": {
+                                                "action": {
+                                                    "description": "name of the action where error is occurred",
+                                                    "type": "string",
+                                                    "example": "create_student"
+                                                },
+                                                "message": {
+                                                    "description": "Error message if incoming parameters is wrong",
+                                                    "type": "string",
+                                                    "example": "Fail due to some errors"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/numbers/{id}": {
+            "get": {
+                "tags": [
+                    "Common data"
+                ],
+                "summary": "Get number by it ID",
+                "description": "Retrieve number",
+                "operationId": "numberId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Number ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "1": {
+                                "summary": "Random number with ID=2",
+                                "value": "2"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Data array",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "description": "ID of the number",
+                                                        "type": "integer",
+                                                        "example": "2"
+                                                    },
+                                                    "number": {
+                                                        "description": "Number value",
+                                                        "type": "integer",
+                                                        "example": "345"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Wrong request!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "properties": {
+                                                "action": {
+                                                    "description": "name of the action where error is occurred",
+                                                    "type": "string",
+                                                    "example": "get_number"
+                                                },
+                                                "message": {
+                                                    "description": "Error message if incoming parameters is wrong",
+                                                    "type": "string",
+                                                    "example": "Fail due to some errors"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

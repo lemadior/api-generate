@@ -20,6 +20,7 @@ class RandomNumberResource extends JsonResource
         $foundedRecord = $this->resource['foundedRecord'];
 
         return [
+            'id' => $foundedRecord->id,
             'number' => $foundedRecord->number
         ];
     }
