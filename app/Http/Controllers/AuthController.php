@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
 use OpenApi\Annotations as OA;
 
 class AuthController extends Controller
