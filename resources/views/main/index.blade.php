@@ -27,7 +27,7 @@
             </p>
 
             <p>
-                <a href="#" class="btn btn-success">Api documentation</a>
+                <a href="{{ url('/api/v1/documentation') }}" class="btn btn-success">Api documentation</a>
             </p>
             </div>
         </div>
