@@ -29,7 +29,7 @@ fi
 echo "Generate application key"
 /usr/bin/docker exec -it app php artisan key:generate --ansi || exit 1
 
-#/usr/bin/docker exec -it app php artisan migrate || exit 1
+/usr/bin/docker exec -it app php artisan migrate --seed || exit 1
 
 echo "done."
 
