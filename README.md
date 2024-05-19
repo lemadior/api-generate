@@ -62,6 +62,7 @@ To use PhpMyAdmin just go to URL: [localhost:8080](http://localhost:8080)
     2. With Authentication - used for generate new number and store it to the database. To use it proper token must be provided.
     3. Without Authentication - get the stored number from database by its ID.
 
+From Swagger page one can check all API's functionality.
 
 6. **To do complex tests do command:**
 
