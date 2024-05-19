@@ -14,7 +14,7 @@
         "/numbers": {
             "post": {
                 "tags": [
-                    "With Authentications"
+                    "With Authentication"
                 ],
                 "summary": "Random Number Generation",
                 "description": "Create the new random integer number",
