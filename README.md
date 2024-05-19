@@ -64,7 +64,7 @@ To use PhpMyAdmin just go to URL: [localhost:8080](http://localhost:8080)
 
 From Swagger page one can check all API's functionality.
 
-6. **To do complex tests do command:**
+6. **To do complex tests type the command:**
 
 ```docker exec -it app php artisan test```
 
