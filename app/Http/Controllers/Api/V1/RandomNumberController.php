@@ -115,7 +115,6 @@ class RandomNumberController extends Controller
         ]);
     }
 
-
     /**
      * Get number stored in the database by it ID
      *

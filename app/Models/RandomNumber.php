@@ -9,6 +9,9 @@ class RandomNumber extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'number'
     ];

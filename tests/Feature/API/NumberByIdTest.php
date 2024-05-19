@@ -47,7 +47,7 @@ class NumberByIdTest extends TestCase
      * @dataProvider numbersProvider
      *
      */
-    public function testNumbersFromAPI($id, $number): void
+    public function testNumbersFromApi($id, $number): void
     {
         $response = $this->get("/api/v1/numbers/{$id}");
 
@@ -66,7 +66,7 @@ class NumberByIdTest extends TestCase
      * @return void
      *
      */
-    public function testNumbersFromAPIWithError(): void
+    public function testNumbersFromApiWithError(): void
     {
         $response = $this->get("/api/v1/numbers/22");
 

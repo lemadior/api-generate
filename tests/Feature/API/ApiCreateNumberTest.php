@@ -70,4 +70,35 @@ class ApiCreateNumberTest extends TestCase
 
         $this->assertStringContainsString('Unauthorized', $response->getContent());
     }
+
+    /**
+     * A test if the digit limit has been reached.
+     *
+     * @return void
+     *
+     */
+    public function testCreateNumbersFromApiWithError(): void
+    {
+        // Create the last available number
+        $this->withHeaders([
+            'Authorization' => 'Bearer' . $this->token,
+            'Accept' => 'application/json'
+        ])->post('/api/v1/numbers');
+
+        // Due to set limits of digits in the number here must be impossible
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer' . $this->token,
+            'Accept' => 'application/json'
+        ])->post('/api/v1/numbers');
+
+        $response->assertStatus(422);
+
+        $data = $response->json();
+
+        $this->assertArrayHasKey('error', $data);
+        $this->assertArrayHasKey('action', $data['error']);
+        $this->assertArrayHasKey('message', $data['error']);
+        $this->assertEquals('create_number', $data['error']['action']);
+        $this->assertEquals('Cannot create new number. Reach maximum of available numbers', $data['error']['message']);
+    }
 }

@@ -14,7 +14,7 @@ class RandomNumberService
      *
      * @return mixed
      */
-    public function getRecordById(int $id)
+    public function getRecordById(int $id): mixed
     {
         $randomNumber = RandomNumber::find($id);
 

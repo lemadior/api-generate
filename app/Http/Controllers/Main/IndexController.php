@@ -11,6 +11,9 @@ use Illuminate\Foundation\Application;
 
 class IndexController extends Controller
 {
+    /**
+     * @return View|Factory|Application|ContractsApplication
+     */
     public function __invoke(): View | Factory | Application | ContractsApplication
     {
         return view('main.index');
