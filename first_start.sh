@@ -29,11 +29,12 @@ fi
 echo "Generate application key"
 /usr/bin/docker exec -it app php artisan key:generate --ansi || exit 1
 
+echo "Do migration & seed"
 /usr/bin/docker exec -it app php artisan migrate --seed || exit 1
 
-echo "done."
+echo "Create secret key for JWT Auth"
+/usr/bin/docker exec -it app php artisan jwt:secret || exit 1
 
-#echo "NOTE: don't forget to run command 'docker exec -it app php artisan migrate'"
-#echo
+echo "done."
 
 exit 0
