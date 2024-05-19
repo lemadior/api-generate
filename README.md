@@ -56,7 +56,7 @@ To use PhpMyAdmin just go to URL: [localhost:8080](http://localhost:8080)
    Or press the button on the homepage.
 
 
-   Api has two part:
+   Api has three part:
 
     1. Auth - generate the JWT-token used to work with protected URI
     2. With Authentication - used for generate new number and store it to the database. To use it proper token must be provided.
